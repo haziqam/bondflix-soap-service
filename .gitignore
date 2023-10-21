@@ -40,3 +40,4 @@ build/
 
 docker.env
 ./src/.env
+src/.env
