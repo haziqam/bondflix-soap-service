@@ -1,0 +1,18 @@
+FROM maven:3.9.5-eclipse-temurin-11 as builder
+
+WORKDIR /app
+
+COPY src ./src
+COPY pom.xml .
+
+RUN mvn clean package -DskipTests
+
+WORKDIR /app
+
+FROM openjdk:22-slim
+
+COPY --from=builder /app/target/your-jaxws-service.jar ./your-jaxws-service.jar
+
+EXPOSE 8080
+
+CMD ["java", "-jar" "jaxws.jar"]

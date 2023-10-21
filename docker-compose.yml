@@ -1,0 +1,36 @@
+version: '3.9'
+
+services:
+#  soap-jax-ws:
+#    container_name: soap-jax-ws
+#    build:
+#      context: .
+#      dockerfile: dockerfile/Dockerfile.jaxws.dev
+#    volumes:
+#      - ./src:/app
+#    ports:
+#      - "8080:8080"
+#    networks:
+#      - soap-network
+#    depends_on:
+#      - soap-mysql
+  soap-mysql:
+    container_name: soap-mysql-db
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: dockerfile/Dockerfile.mysql
+    ports:
+      - "3306:3306"
+    env_file:
+      - docker.env
+    volumes:
+      - soap-mysql-data:/var/lib/mysql
+    networks:
+      - soap-network
+
+volumes:
+  soap-mysql-data:
+
+networks:
+  soap-network:
