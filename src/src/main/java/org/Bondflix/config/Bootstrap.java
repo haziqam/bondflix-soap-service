@@ -15,7 +15,7 @@ public class Bootstrap {
     private Bootstrap() {
         configureDatabase();
         configureServices();
-        configureEndpoint();
+        configureEndpoints();
     }
     private static class BootstrapHolder {
         private static final Bootstrap INSTANCE = new Bootstrap();
@@ -37,7 +37,7 @@ public class Bootstrap {
         }
     }
 
-    //TODO: Implement base route name http://localhost:8080/ + nama service
+    //TODO: Implement base route name http://localhost:8080/ + name service
     private void configureServices(){
         try {
             serviceRegistry = new ServiceRegistry();
@@ -47,7 +47,7 @@ public class Bootstrap {
         }
     }
 
-    private void configureEndpoint(){
+    private void configureEndpoints(){
         for (Map.Entry<String, Service> entry : serviceRegistry.getRegisteredServices().entrySet()) {
             String serviceName = entry.getKey();
             String address = serviceRegistry.getServiceAddress(serviceName);
