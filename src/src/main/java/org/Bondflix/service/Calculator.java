@@ -6,7 +6,7 @@ import jakarta.jws.WebService;
 import jakarta.jws.WebParam;
 
 @WebService
-public class Calculator {
+public class Calculator implements Service {
 
     @WebMethod
     public double add(@WebParam(name ="arg1") double a, @WebParam(name = "arg2") double b){

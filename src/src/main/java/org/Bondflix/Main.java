@@ -1,11 +1,9 @@
 package org.Bondflix;
 
-import jakarta.xml.ws.Endpoint;
-import org.Bondflix.service.Calculator;
+import org.Bondflix.config.Bootstrap;
 
 public class Main {
     public static void main(String[] args) {
-        String address = "http://soap-jax-ws:8080/hello";
-        Endpoint.publish(address, new Calculator());
+        Bootstrap bootstrap = Bootstrap.getInstance();
     }
 }
