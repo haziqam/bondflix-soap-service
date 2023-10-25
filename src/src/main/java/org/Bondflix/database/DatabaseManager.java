@@ -11,8 +11,8 @@ public class DatabaseManager {
     private static DatabaseManager instance;
     private Connection databaseConnection;
 
-    private static final int MAX_RETRY_ATTEMPTS = 5;
-    private static final long RETRY_INTERVAL_MS = 5000;
+    private static final int MAX_RETRY_ATTEMPTS = 6;
+    private static final long RETRY_INTERVAL_MS = 10000;
 
     public static DatabaseManager getInstance() {
         if (instance == null) {
