@@ -26,7 +26,7 @@ public class LogRepository extends BaseRepository<Log>{
     @Override
     public Log create(Log log) throws SQLException {
         Statement stmt = this.dbConnection.createStatement();
-        int rs = stmt.executeUpdate("INSERT INTO " + this.tableName + " (body_request, ip, endpoint, timestamp) VALUES ('" + log.getBodyRequest() + "', '" + log.getIP() + "', '" + log.getEndpoint() + "', '" + log.getTimestamp() + "')");
+        int rs = stmt.executeUpdate("INSERT INTO " + this.tableName + " (client, body_request, ip, endpoint, timestamp) VALUES ('" + log.getClient() + "', '" + log.getBodyRequest() + "', '" + log.getIP() + "', '" + log.getEndpoint() + "', '" + log.getTimestamp() + "')");
         if (rs > 0) {
             return log;
         }

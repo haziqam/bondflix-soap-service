@@ -25,6 +25,7 @@ services:
     env_file:
       - docker.env
     volumes:
+      - ./src/migrations/migration.sql:/docker-entrypoint-initdb.d/schema.sql:ro
       - soap-mysql-data:/var/lib/mysql
     networks:
       - soap-network

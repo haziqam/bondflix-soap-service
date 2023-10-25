@@ -60,8 +60,9 @@ public class Log extends Model{
 
     @Override
     public void createFromSQL(ResultSet rs) throws SQLException {
+        this.client = rs.getString("client");
         this.bodyRequest = rs.getString("body_request");
-        this.IP = rs.getString("IP");
+        this.IP = rs.getString("ip");
         this.endpoint = rs.getString("endpoint");
         this.timestamp = rs.getTimestamp("timestamp").toString();
     }

@@ -24,7 +24,7 @@ public class Bootstrap {
     }
     private void configureDatabase() {
         try {
-            DatabaseManager databaseManager = DatabaseManager.getInstance();
+            DatabaseManager.getInstance();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
