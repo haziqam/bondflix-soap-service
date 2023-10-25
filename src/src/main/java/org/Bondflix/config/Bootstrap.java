@@ -1,16 +1,13 @@
 package org.Bondflix.config;
 
-import io.github.cdimascio.dotenv.Dotenv;
 import jakarta.xml.ws.Endpoint;
 import org.Bondflix.database.DatabaseManager;
-import org.Bondflix.service.Subscription;
 import org.Bondflix.service.Service;
 import org.Bondflix.service.ServiceRegistry;
+import org.Bondflix.service.Subscription;
 
-import java.sql.Connection;
 import java.util.Map;
 
-//TODO:more config stuff to run the program
 public class Bootstrap {
     private ServiceRegistry serviceRegistry;
     private Bootstrap() {
@@ -33,11 +30,10 @@ public class Bootstrap {
         }
     }
 
-    //TODO: Implement base route name http://localhost:8080/ + name service
     private void configureServices(){
         try {
             serviceRegistry = new ServiceRegistry();
-            serviceRegistry.registerService("calculator", new Subscription(), "http://localhost:8080/hello");
+            serviceRegistry.registerService("subscription", new Subscription());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
