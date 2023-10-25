@@ -7,7 +7,7 @@ public class BaseRepository<Model> {
     protected Connection dbConnection;
     protected String tableName;
 
-    protected  BaseRepository(Connection dbConnection, String tableName) {
+    protected BaseRepository(Connection dbConnection, String tableName) {
         this.dbConnection = dbConnection;
         this.tableName = tableName;
     }

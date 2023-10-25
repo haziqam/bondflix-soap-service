@@ -14,7 +14,7 @@ public class DatabaseManager {
         if (instance == null) {
             instance = new DatabaseManager();
         }
-        return null;
+        return instance;
     }
 
     private DatabaseManager() {
@@ -25,7 +25,6 @@ public class DatabaseManager {
             String dbPassword = dotenv.get("DB_PASS");
             assert dbURL != null;
             databaseConnection = DriverManager.getConnection(dbURL, dbUser, dbPassword);
-            databaseConnection.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
