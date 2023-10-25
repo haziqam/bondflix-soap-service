@@ -1,5 +1,7 @@
 package org.Bondflix.database;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -8,15 +10,22 @@ public class DatabaseManager {
     private static DatabaseManager instance;
     private Connection databaseConnection;
 
-    public static void getInstance(String dbURL, String dbUser, String dbPassword) {
+    public static DatabaseManager getInstance() {
         if (instance == null) {
-            instance = new DatabaseManager(dbURL, dbUser, dbPassword);
+            instance = new DatabaseManager();
         }
+        return null;
     }
 
-    private DatabaseManager(String dbURL, String dbUser, String dbPassword) {
+    private DatabaseManager() {
         try {
+            Dotenv dotenv = Dotenv.load();
+            String dbURL = dotenv.get("DB_URL_DEV");
+            String dbUser = dotenv.get("DB_USER");
+            String dbPassword = dotenv.get("DB_PASS");
+            assert dbURL != null;
             databaseConnection = DriverManager.getConnection(dbURL, dbUser, dbPassword);
+            databaseConnection.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

@@ -3,10 +3,11 @@ package org.Bondflix.config;
 import io.github.cdimascio.dotenv.Dotenv;
 import jakarta.xml.ws.Endpoint;
 import org.Bondflix.database.DatabaseManager;
-import org.Bondflix.service.Calculator;
+import org.Bondflix.service.Subscription;
 import org.Bondflix.service.Service;
 import org.Bondflix.service.ServiceRegistry;
 
+import java.sql.Connection;
 import java.util.Map;
 
 //TODO:more config stuff to run the program
@@ -26,12 +27,7 @@ public class Bootstrap {
     }
     private void configureDatabase() {
         try {
-            Dotenv dotenv = Dotenv.load();
-            String dbURL = dotenv.get("DB_URL_DEV");
-            String dbUser = dotenv.get("DB_USER");
-            String dbPassword = dotenv.get("DB_PASS");
-
-            DatabaseManager.getInstance(dbURL, dbUser, dbPassword);
+            DatabaseManager databaseManager = DatabaseManager.getInstance();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -41,7 +37,7 @@ public class Bootstrap {
     private void configureServices(){
         try {
             serviceRegistry = new ServiceRegistry();
-            serviceRegistry.registerService("calculator", new Calculator(), "http://localhost:8080/hello");
+            serviceRegistry.registerService("calculator", new Subscription(), "http://localhost:8080/hello");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
