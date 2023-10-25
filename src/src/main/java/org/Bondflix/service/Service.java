@@ -23,12 +23,11 @@ public abstract class Service {
         Timestamp ts = new Timestamp(System.currentTimeMillis());
         String ts_string = ts.toString().split("\\.")[0];
         String client = this.getClient();
-
         Log log = new Log(bodyRequest, ip, endpoint, ts_string, client);
         LogRepository.getInstance().create(log);
     }
 
-    private String getRemoteAddr() {
+    private String getIP() {
         MessageContext mc = ctx.getMessageContext();
         String httpExchangeKey = "com.sun.xml.ws.http.exchange";
         HttpExchange httpExchange = (HttpExchange) mc.get(httpExchangeKey);
@@ -51,10 +50,10 @@ public abstract class Service {
         throw new Exception("Key is not registered");
     }
 
-    protected void validateAndRecord(Object ...params) throws Exception {
+    protected void log(Object ...params) throws Exception {
         var ptrTrace = Thread.currentThread().getStackTrace()[2];
         String endpoint = ptrTrace.getClassName() + "." + ptrTrace.getMethodName();
-        this.logClient(endpoint, Arrays.toString(params), this.getRemoteAddr());
+        this.logClient(endpoint, Arrays.toString(params), this.getIP());
     }
 
 }

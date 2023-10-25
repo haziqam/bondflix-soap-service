@@ -19,7 +19,7 @@ public class Subscription extends Service {
 
     @WebMethod
     public double add(@WebParam(name="arg1") double a, @WebParam(name = "arg2") double b) throws Exception {
-        this.validateAndRecord(a, b);
+        this.log(a, b);
         return a+b;
     }
 

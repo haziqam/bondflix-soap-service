@@ -22,44 +22,24 @@ public class Log extends Model{
         return bodyRequest;
     }
 
-    public void setBodyRequest(String bodyRequest) {
-        this.bodyRequest = bodyRequest;
-    }
-
     public String getIP() {
         return IP;
-    }
-
-    public void setIP(String IP) {
-        this.IP = IP;
     }
 
     public String getEndpoint() {
         return endpoint;
     }
 
-    public void setEndpoint(String endpoint) {
-        this.endpoint = endpoint;
-    }
-
     public String getTimestamp() {
         return timestamp;
-    }
-
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
     }
 
     public String getClient() {
         return client;
     }
 
-    public void setClient(String client) {
-        this.client = client;
-    }
-
     @Override
-    public void createFromSQL(ResultSet rs) throws SQLException {
+    public void marshal(ResultSet rs) throws SQLException {
         this.client = rs.getString("client");
         this.bodyRequest = rs.getString("body_request");
         this.IP = rs.getString("ip");

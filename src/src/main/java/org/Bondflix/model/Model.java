@@ -5,5 +5,5 @@ import java.sql.SQLException;
 
 public abstract class Model {
 
-    public abstract void createFromSQL(ResultSet rs) throws SQLException;
+    public abstract void marshal(ResultSet rs) throws SQLException;
 }

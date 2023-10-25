@@ -33,7 +33,6 @@ public class DatabaseManager {
                     dbURL = dotenv.get("DB_URL_DEV");
                 } else {
                     dbURL = dotenv.get("DB_URL_PROD");
-                    System.out.println(dbURL);
                 }
                 String dbUser = dotenv.get("DB_USER");
                 String dbPassword = dotenv.get("DB_PASS");

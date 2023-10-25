@@ -35,7 +35,7 @@ public class ApiKeyRepository extends BaseRepository {
         ResultSet rs = stmt.executeQuery("SELECT * FROM " + this.tableName);
         while (rs.next()) {
             ApiKey apiKey = new ApiKey();
-            apiKey.createFromSQL(rs);
+            apiKey.marshal(rs);
             result.add(apiKey);
         }
         return result;
