@@ -4,7 +4,7 @@ import jakarta.xml.ws.Endpoint;
 import org.Bondflix.database.DatabaseManager;
 import org.Bondflix.service.Service;
 import org.Bondflix.service.ServiceRegistry;
-import org.Bondflix.service.Subscription;
+import org.Bondflix.service.ShortsSubscriptionServ;
 
 import java.util.Map;
 
@@ -33,7 +33,7 @@ public class Bootstrap {
     private void configureServices(){
         try {
             serviceRegistry = new ServiceRegistry();
-            serviceRegistry.registerService("subscription", new Subscription());
+            serviceRegistry.registerService("shorts_subscription", new ShortsSubscriptionServ());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

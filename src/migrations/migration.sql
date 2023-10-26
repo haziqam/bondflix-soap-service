@@ -13,5 +13,12 @@ CREATE TABLE IF NOT EXISTS api_key (
     client VARCHAR(255)
 );
 
+CREATE TABLE IF NOT EXISTS shorts_subscription (
+    creator_id INT NOT NULL,
+    subscriber_id INT NOT NULL,
+    status ENUM('PENDING', 'REJECTED', 'ACCEPTED') NOT NULL DEFAULT 'PENDING',
+    PRIMARY KEY (creator_id, subscriber_id)
+);
+
 INSERT IGNORE INTO api_key (api_key, client) VALUES ('rest-api-key', 'REST');
 INSERT IGNORE INTO api_key (api_key, client) VALUES ('app-api-key', 'APP');

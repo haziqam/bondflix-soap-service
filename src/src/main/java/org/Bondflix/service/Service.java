@@ -50,6 +50,7 @@ public abstract class Service {
         throw new Exception("Key is not registered");
     }
 
+
     protected void log(Object ...params) throws Exception {
         var ptrTrace = Thread.currentThread().getStackTrace()[2];
         String endpoint = ptrTrace.getClassName() + "." + ptrTrace.getMethodName();
