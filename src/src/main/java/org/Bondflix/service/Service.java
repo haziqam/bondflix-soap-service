@@ -1,9 +1,9 @@
 package org.Bondflix.service;
 
 import com.sun.net.httpserver.HttpExchange;
-import jakarta.annotation.Resource;
-import jakarta.xml.ws.WebServiceContext;
-import jakarta.xml.ws.handler.MessageContext;
+import javax.annotation.Resource;
+import javax.xml.ws.WebServiceContext;
+import javax.xml.ws.handler.MessageContext;
 import org.Bondflix.model.ApiKey;
 import org.Bondflix.model.Log;
 import org.Bondflix.repository.ApiKeyRepository;
@@ -17,7 +17,7 @@ import java.util.Map;
 public abstract class Service {
 
     @Resource
-    WebServiceContext ctx;
+    public WebServiceContext ctx;
 
     protected void logClient(String endpoint, String bodyRequest, String ip) throws Exception {
         Timestamp ts = new Timestamp(System.currentTimeMillis());
@@ -52,7 +52,7 @@ public abstract class Service {
 
 
     protected void log(Object ...params) throws Exception {
-        var ptrTrace = Thread.currentThread().getStackTrace()[2];
+        StackTraceElement ptrTrace = Thread.currentThread().getStackTrace()[2];
         String endpoint = ptrTrace.getClassName() + "." + ptrTrace.getMethodName();
         this.logClient(endpoint, Arrays.toString(params), this.getIP());
     }

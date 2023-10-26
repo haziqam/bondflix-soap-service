@@ -1,11 +1,12 @@
 package org.Bondflix.config;
 
-import jakarta.xml.ws.Endpoint;
+
 import org.Bondflix.database.DatabaseManager;
 import org.Bondflix.service.Service;
 import org.Bondflix.service.ServiceRegistry;
 import org.Bondflix.service.ShortsSubscriptionServ;
 
+import javax.xml.ws.Endpoint;
 import java.util.Map;
 
 public class Bootstrap {
