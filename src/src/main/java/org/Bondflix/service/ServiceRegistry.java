@@ -23,11 +23,6 @@ public class ServiceRegistry {
 
         serviceAddresses.put(serviceName, serviceAddress);
     }
-
-    public Service getService(String serviceName) {
-        return services.get(serviceName);
-    }
-
     public String getServiceAddress(String serviceName) {
         return serviceAddresses.get(serviceName);
     }

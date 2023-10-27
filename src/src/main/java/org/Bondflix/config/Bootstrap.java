@@ -2,6 +2,7 @@ package org.Bondflix.config;
 
 
 import org.Bondflix.database.DatabaseManager;
+import org.Bondflix.service.PaymentServ;
 import org.Bondflix.service.Service;
 import org.Bondflix.service.ServiceRegistry;
 import org.Bondflix.service.ShortsSubscriptionServ;
@@ -35,6 +36,7 @@ public class Bootstrap {
         try {
             serviceRegistry = new ServiceRegistry();
             serviceRegistry.registerService("shorts_subscription", new ShortsSubscriptionServ());
+            serviceRegistry.registerService("payment_gateway", new PaymentServ());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

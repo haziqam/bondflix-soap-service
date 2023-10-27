@@ -10,7 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ApiKeyRepository extends BaseRepository {
+public class ApiKeyRepository extends BaseRepository<ApiKey> {
 
     private static ApiKeyRepository instance;
     protected ApiKeyRepository(Connection dbConnection, String tableName) {

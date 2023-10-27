@@ -62,14 +62,4 @@ public class DatabaseManager {
     public Connection getDatabaseConnection() {
         return databaseConnection;
     }
-
-    public void closeConnection() {
-        if (databaseConnection != null) {
-            try {
-                databaseConnection.close();
-            } catch (SQLException e) {
-                System.out.println(e.getMessage());
-            }
-        }
-    }
 }
