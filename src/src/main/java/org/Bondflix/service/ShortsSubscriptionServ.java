@@ -61,18 +61,20 @@ public class ShortsSubscriptionServ extends Service {
     }
 
     @WebMethod
-    public boolean updateSubscriptionByCreatorId(@WebParam(name = "creatorId") int creatorId, @WebParam(name = "subscriptionStatus") boolean isSubscribed) throws Exception {
+    public boolean updateSubscriptionByCreatorId(@WebParam(name = "creatorId") int creatorId, @WebParam(name = "subscriberId") int subscriberId, @WebParam(name = "subscriptionStatus") boolean isSubscribed) throws Exception {
         this.log(creatorId, isSubscribed);
         try {
             ShortsSubscriptionRepository repository = ShortsSubscriptionRepository.getInstance();
             List<ShortsSubscription> subscriptions = repository.subscriberList(creatorId);
 
             for (ShortsSubscription subscription : subscriptions) {
-                subscription.setSubscriptionStatus(isSubscribed ? ShortsSubscription.SubscriptionStatus.ACCEPTED : ShortsSubscription.SubscriptionStatus.REJECTED);
-                repository.update(subscription);
+                if (subscription.getSubscriberId() == subscriberId) {
+                    subscription.setSubscriptionStatus(isSubscribed ? ShortsSubscription.SubscriptionStatus.ACCEPTED : ShortsSubscription.SubscriptionStatus.REJECTED);
+                    repository.update(subscription);
+                    return true;
+                }
             }
-
-            return true;
+            return false;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return false;
