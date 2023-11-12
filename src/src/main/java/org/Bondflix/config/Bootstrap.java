@@ -6,13 +6,23 @@ import org.Bondflix.service.PaymentServ;
 import org.Bondflix.service.Service;
 import org.Bondflix.service.ServiceRegistry;
 import org.Bondflix.service.ShortsSubscriptionServ;
+import org.Bondflix.utils.SendEmail;
 
+import javax.mail.MessagingException;
 import javax.xml.ws.Endpoint;
 import java.util.Map;
 
 public class Bootstrap {
     private ServiceRegistry serviceRegistry;
     private Bootstrap() {
+
+        try {
+            SendEmail newSandEmail = new SendEmail();
+            newSandEmail.sendEmail("nicholasliem01@gmail.com", "hehehe", "hehe");
+            System.out.println("Success");
+        } catch (MessagingException e) {
+            System.out.println("Error" + e.getMessage());
+        }
         configureDatabase();
         configureServices();
         configureEndpoints();
