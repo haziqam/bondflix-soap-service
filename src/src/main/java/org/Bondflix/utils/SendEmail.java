@@ -10,7 +10,6 @@ import javax.mail.internet.MimeMessage;
 public class SendEmail {
 
     private final Properties prop;
-
     public SendEmail() {
         prop = new Properties();
         prop.put("mail.smtp.auth", "true");
@@ -29,7 +28,7 @@ public class SendEmail {
         });
 
         Message message = new MimeMessage(session);
-        message.setFrom(new InternetAddress("13521135@std.stei.itb.ac.id"));
+        message.setFrom(new InternetAddress("admin@bondflix.com"));
         message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
         message.setSubject(subject);
         message.setText(text);
