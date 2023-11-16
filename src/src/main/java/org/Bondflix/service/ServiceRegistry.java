@@ -13,7 +13,7 @@ public class ServiceRegistry {
         services.put(serviceName, service);
         String serviceAddress;
         if (isDevEnvironment()){
-            serviceAddress = "http://localhost:8080/" + serviceName;
+            serviceAddress = "http://localhost:8081/" + serviceName;
         } else {
             Dotenv dotenv = Dotenv.load();
             String serverHost = dotenv.get("SERVER_HOST");
