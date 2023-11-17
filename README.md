@@ -7,7 +7,7 @@ Bondflix SOAP Service adalah sebuah server yang menyediakan layanan SOAP API unt
 ![Schema](/asset/SchemaSOAP.png)
 
 ## Endpoint API
-Endpoint API dapat dilihat pada link ini: https://documenter.getpostman.com/view/30701742/2s9YXpUJYa
+Endpoint API dapat dilihat pada link ini: https://documenter.getpostman.com/view/30701742/2s9YXpUyWT
 
 ## Pembagian Tugas
 **Anggota Kelompok**
